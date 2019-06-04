@@ -24,7 +24,8 @@
             type="text"
             name="nome"
             id="nome"
-            placeholder="Digite Seu Nome Completo Aqui"
+            class="border"
+            placeholder="Digite Seu Nome Completo"
             required
           />
           <br />
@@ -33,6 +34,7 @@
             type="email"
             id="email"
             name="email"
+            class="border"
             placeholder="Your_email@hotmail.com"
             required
           />
@@ -42,8 +44,8 @@
             type="tel"
             id="phone"
             name="phone"
+            class="onlyNumber border"
             placeholder="(99)99999-9999"
-            onkeypress="return onlyNumber(this)"
             maxlength="15"
             required
           />
@@ -80,7 +82,7 @@
               type="text"
               id="cpf"
               placeholder="xxx.xxx.xxx-xx"
-              onkeypress="return onlyNumber(this)"
+              class="onlyNumber border"
               maxlength="14"
             />
           </div>
@@ -90,7 +92,7 @@
               type="text"
               id="cnpj"
               placeholder=" XX.XXX.XXX/XXXX-XX"
-              onkeypress=" return onlyNumber(this)"
+              class="onlyNumber border"
               maxlength="18"
             />
           </div>

@@ -93,13 +93,23 @@ label {
 .cnpj {
   width: 100%;
   padding: 10px;
+  margin: 0;
+  color: #ecf0f1;
+  display: none;
+}
+
+.cpf input,
+.cnpj input {
   background: transparent;
   outline: none;
   border: none;
   font-size: 1.2rem;
-  margin: 0;
-  color: #ecf0f1;
-  display: none;
+  border-bottom: 2px solid #2ecc71;
+}
+
+.cpf ::placeholder,
+.cnpj ::placeholder {
+  text-transform: uppercase;
 }
 
 #btn {
@@ -114,6 +124,7 @@ label {
   font-weight: 650;
   letter-spacing: 2px;
   transition: all 0.5s;
+  outline: none;
 }
 
 #btn:hover {
@@ -146,4 +157,33 @@ label {
 
 #juridica:checked ~ .cnpj {
   display: block;
+}
+
+.invalid {
+  border-color: red !important;
+  animation-name: shake;
+  animation-delay: 0;
+  animation-duration: 1s;
+}
+
+@keyframes shake {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate3d(10px, 0, 0);
+  }
 }

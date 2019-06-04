@@ -1,10 +1,13 @@
-function onlyNumber(e) {
-  var key = window.event ? event.keyCode : e.which;
-  if (key > 47 && key < 58) return true;
-  else {
-    if (key == 8 || key == 0) return true;
-    else return false;
-  }
+function onlyNumber() {
+  let camp = document.querySelectorAll(".onlyNumber");
+  camp.addEventListener("onkeypress", e => {
+    var key = window.event ? event.keyCode : e.which;
+    if (key > 47 && key < 58) return true;
+    else {
+      if (key == 8 || key == 0) return true;
+      else return false;
+    }
+  });
 }
 
 function ValidForm(form) {
@@ -12,45 +15,87 @@ function ValidForm(form) {
   let juridica = document.querySelector(".tipo #juridica");
   let cpf = form.cpf.value;
   let cnpj = form.cnpj.value;
-  let nome = form.nome.value;
+  let name = form.nome.value;
   let phone = form.phone.value;
   let email = form.email.value;
-  if (nome == "" || nome.length < 5 || nome == null) {
-    alert("Nome Invalido. Favor utilizar um nome valido");
+  if (nameValidation(name)) {
     form.nome.focus();
+    form.nome.classList.add("invalid");
+    form.nome.addEventListener("animationend", () => {
+      form.nome.classList.remove("invalid");
+    });
+
     return false;
   }
 
-  if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
-    alert("Email Invalido. Favor utilizar um email valido");
+  if (emailValidation(email)) {
     form.email.focus();
+    form.email.classList.add("invalid");
+    form.email.addEventListener("animationend", () => {
+      form.email.classList.remove("invalid");
+    });
     return false;
   }
 
-  if (phone == "" || phone.length < 12) {
-    alert("Telefone Invalido. Favor utilizar um telefone valido");
+  if (phoneValidation(phone)) {
     form.phone.focus();
+    form.phone.classList.add("invalid");
+    form.phone.addEventListener("animationend", () => {
+      form.phone.classList.remove("invalid");
+    });
     return false;
   }
 
   if (fisica.checked) {
     if (!cpfValidation(cpf)) {
-      alert("Favor informar um CPF valido!");
-      return false;
+      form.cpf.classList.add("invalid");
+      form.cpf.addEventListener("animationend", () => {
+        form.cpf.classList.remove("invalid");
+      });
       form.cpf.focus();
+      return false;
     }
   } else if (juridica.checked) {
     if (!cnpjValidation(cnpj)) {
-      alert("Favor inserir um CNPJ valido!");
-      return false;
+      form.cnpj.classList.add("invalid");
+      form.cnpj.addEventListener("animationend", () => {
+        form.cnpj.classList.remove("invalid");
+      });
       form.cnpj.focus();
+      return false;
     }
   }
 }
 
 /*
 *
-     Validações */
+     Validações  */
+
+//Phone
+
+function phoneValidation(phone) {
+  phone = phone.replace(/[^\d]+/g, "");
+  if (phone == "" || phone.length < 10) {
+    return true;
+  } else return false;
+}
+
+// NOME
+
+function nameValidation(name) {
+  if (name == "" || name.length < 3 || name == null) {
+    return true;
+  } else return false;
+}
+
+// EMAIL
+function emailValidation(email) {
+  let getPoint = email.indexOf("@");
+
+  if (email.indexOf("@") == -1 || email.indexOf(".", [getPoint]) == -1) {
+    return true;
+  } else return false;
+}
 
 //CPF
 function cpfValidation(cpf) {
