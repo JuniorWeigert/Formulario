@@ -49,8 +49,4 @@ Confirmação de senha utilizada simplesmente em comparação direta com a senha
 ## __Responsividade__
 
 Responsividade aplicada ao furmulário utilizando o Bootstrap e suas classes para controle de formulario. 
-Formulário 100% responsivo e adaptivo à qualquer tipo de dispositivo.
-
-***
-
-> NOTA: Sim, Esse formulário é extremamente simples e não há muitas funcões de uso para ele e não deveria estar no GitHub, porém com esse projetinho pessoal eu pratiquei JS, Bootstrap, Markdown, HTML, Git e Github. E é assim que tudo começa...
+Formulário 100% responsivo e adaptivo à qualquer tipo de dispositiv
